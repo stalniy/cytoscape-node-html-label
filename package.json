@@ -3,10 +3,10 @@
   "version": "1.2.2",
   "description": "labels for cytoscape nodes",
   "author": "Kalugin Sergey <kalugin.perm@gmail.com> (https://github.com/kaluginserg)",
-  "main": "./dist/node-html.umd.js",
+  "main": "./dist/node-html.umd.min.js",
   "es2015": "./dist/node-html.es.js",
   "spm": {
-    "main": "./dist/node-html.umd.js"
+    "main": "./dist/node-html.umd.min.js"
   },
   "scripts": {
     "test": "karma start karma.conf.js",
