@@ -35,7 +35,7 @@ var layoutCoseOptions = {
     gravity: 1.4
 };
 
-registerCytoscapeNodeHtmlPlugin(cytoscape);
+cytoscape.use(registerCytoscapeNodeHtmlPlugin);
 var cy = cytoscape({
     container: document.getElementById('cy'),
 

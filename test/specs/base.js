@@ -7,7 +7,7 @@ describe('base', function () {
 
   beforeAll(function () {
     document.body.innerHTML += '<div id="cy"></div>';
-    registerCytoscapeNodeHtmlPlugin(cytoscape)
+    cytoscape.use(registerCytoscapeNodeHtmlPlugin)
     cy = cytoscape({
       container: document.getElementById('cy'),
       layout: layoutOptions,
@@ -23,7 +23,7 @@ describe('base', function () {
 
   function isMainDefinedTest() {
     isCyDefinedTest();
-    expect(typeof cy.nodeHtmlLabel).toEqual('function');
+    expect(typeof cy.attachHtmlToNodes).toEqual('function');
   }
 
   function getWrapDiv() {
@@ -31,11 +31,11 @@ describe('base', function () {
   }
 
   function cyInitPlugin() {
-    cy.nodeHtmlLabel([
+    cy.attachHtmlToNodes([
       {
         query: '.l1',
         wrapCssClasses: 'cy-title',
-        tpl: function (data) {
+        tpl(data) {
           return '<p class="cy-title__p1">' + data.id + '</p>' + '<p  class="cy-title__p2">' + data.name + '</p>';
         }
       },
@@ -43,8 +43,10 @@ describe('base', function () {
         query: '.l2',
         positionX: 'right',
         wrapCssClasses: 'cy-title cy-title_right',
-        tpl: function (data) {
-          return '<p class="cy-title__p1">' + data.id + '</p>' + '<p class="cy-title__p2">' + data.name + '</p>';
+        tpl(data) {
+          const node = document.createElement('div');
+          node.textContent = `${data.name} (${data.id})`;
+          return node;
         }
       }
     ]);
