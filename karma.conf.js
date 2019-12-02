@@ -15,9 +15,9 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'libs/cytoscape.min.js', watched: false},
-      {pattern: 'dist/cytoscape-node-html-label.js', watched: false},
-      {pattern: 'test/**/*.css'},
+      { pattern: require.resolve('cytoscape/dist/cytoscape.umd.js'), watched: false },
+      { pattern: 'dist/node-html.umd.min.js', watched: false } ,
+      'test/**/*.css',
       'test/**/*.js'
     ],
 
@@ -56,7 +56,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

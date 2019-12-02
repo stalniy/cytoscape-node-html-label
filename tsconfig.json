@@ -1,24 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "None",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+		"declaration": true,
+		"declarationDir": "./dist",
+		"module": "es6",
+		"noImplicitAny": false,
+		"skipLibCheck": true,
     "lib": [
-      "ES5",
+      "es5",
+      "es6",
       "dom"
     ],
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "removeComments": true,
-    "outDir": "dist",
-    "skipLibCheck": true
-  },
+	},
   "files": [
-    "./src/cytoscape-node-html-label.ts"
+    "./src/node-html.ts"
   ]
 }

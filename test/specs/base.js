@@ -1,5 +1,3 @@
-"use strict";
-
 describe('base', function () {
   var cy;
   var layoutOptions = {
@@ -9,6 +7,7 @@ describe('base', function () {
 
   beforeAll(function () {
     document.body.innerHTML += '<div id="cy"></div>';
+    registerCytoscapeNodeHtmlPlugin(cytoscape)
     cy = cytoscape({
       container: document.getElementById('cy'),
       layout: layoutOptions,
