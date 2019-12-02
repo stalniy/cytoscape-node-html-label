@@ -10,5 +10,5 @@ interface CytoscapeNodeHtmlParams {
     halignBox?: IHAlign;
     valignBox?: IVAlign;
     cssClass?: string;
-    tpl?: (d: any) => string;
+    tpl?: (d: any) => string | HTMLElement;
 }

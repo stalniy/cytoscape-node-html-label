@@ -11,7 +11,7 @@ interface CytoscapeNodeHtmlParams {
   halignBox?: IHAlign;
   valignBox?: IVAlign;
   cssClass?: string;
-  tpl?: (d: any) => string;
+  tpl?: (d: any) => string | HTMLElement;
 }
 
 (function () {
@@ -57,7 +57,7 @@ interface CytoscapeNodeHtmlParams {
   }
 
   class LabelElement {
-    public tpl: (d: any) => string;
+    public tpl: (d: any) => string | HTMLElement;
 
     private _position: number[];
     private _node: HTMLElement;
@@ -112,7 +112,15 @@ interface CytoscapeNodeHtmlParams {
 
     updateData(data: any) {
       try {
-        this._node.innerHTML = this.tpl(data);
+        const nodeHtml = this.tpl(data)
+        if (typeof nodeHtml === 'string') {
+          this._node.innerHTML = nodeHtml
+          return
+        }
+
+        this._node.innerHTML = ''
+        this._node.appendChild(nodeHtml)
+
       } catch (err) {
         console.error(err);
       }
